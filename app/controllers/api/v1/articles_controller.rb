@@ -33,7 +33,7 @@ module Api
                 if article.update_attributes(article_params)
                     render json: {status: 'SUCCESS', message: 'Updated ariticle', data:article},status: :ok
                 else
-                    render json: {status: 'ERROR', message: 'Article not article', 
+                    render json: {status: 'ERROR', message: 'Article not updated', 
                     data:article.errors},status: :unprocessable_entity
                 end   
             end

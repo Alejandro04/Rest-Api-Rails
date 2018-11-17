@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   namespace 'api' do
     namespace 'v1' do
       resources :articles
+      resources :categories
+      resources :subcategories
+     # get '/categories/subcategories/:id', to: 'categories#subcategories'
     end
   end
 end

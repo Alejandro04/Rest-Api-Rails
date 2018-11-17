@@ -12,3 +12,9 @@
         body: Faker::Lorem.sentence
     })
 end
+
+5.times do
+    Category.create({
+        name: Faker::GameOfThrones.house
+    })
+end
