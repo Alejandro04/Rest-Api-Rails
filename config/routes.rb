@@ -6,6 +6,8 @@ Rails.application.routes.draw do
       resources :categories
       resources :subcategories
       get '/categories/subcategories/:id', to: 'categories#subcategories'
+      get '/categories/articles/:id', to: 'categories#articles'
+      get '/articles/category/:id', to: 'articles#category'
     end
   end
 end

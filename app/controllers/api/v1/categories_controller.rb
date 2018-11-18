@@ -40,7 +40,12 @@ module Api
 
             def subcategories
                 subcategories = Category.find(params[:id]).subcategories
-                render json: {status: 'SUCCESS', message: 'Subcategories', data:subcategories},status: :ok
+                render json: {status: 'SUCCESS', message: 'Subcategories of category', data:subcategories},status: :ok
+            end
+
+            def articles
+                articles = Category.find(params[:id]).articles
+                render json: {status: 'SUCCESS', message: 'Articles of category', data:articles},status: :ok
             end
 
             private

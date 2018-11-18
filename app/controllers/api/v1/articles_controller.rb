@@ -38,6 +38,11 @@ module Api
                 end   
             end
 
+            def category
+                category = Article.find(params[:id]).category
+                render json: {status: 'SUCCESS', message: 'Category of article', data:category},status: :ok
+            end
+
             private
 
             def article_params
