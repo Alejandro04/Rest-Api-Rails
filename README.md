@@ -1,6 +1,6 @@
 # Rails Rest Api
  
-## The purposes are:
+## The purpose is:
 ```
 Understand the functionality
 ```
