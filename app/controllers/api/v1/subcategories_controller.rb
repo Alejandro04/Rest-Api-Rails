@@ -42,7 +42,7 @@ module Api
             end
 
             def subcategory_params
-                params.permit(:name)
+                params.permit(:name, :category_id)
             end
 
         end
