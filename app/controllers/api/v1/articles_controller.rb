@@ -1,53 +1,50 @@
 module Api
     module V1
         class ArticlesController < ApplicationController
-            def index
-                articles = Article.order('created_at DESC');
-                render json: {status: 'SUCCESS', message: 'Loaded ariticles', data:articles},status: :ok
-            end
+          #before_action :authenticate_user!
+          before_action :set_articles, only: [:show, :update, :destroy]
 
-            def show
-                article = Article.find(params[:id])
-                render json: {status: 'SUCCESS', message: 'Loaded ariticle', data:article},status: :ok
+          def index
+            @articles = Article.all
+        
+            render json: @articles
+          end
+        
+          def show
+            render json: @articles
+          end
+        
+          def create
+            @article = Article.new(article_params)
+        
+            if @article.save
+              render json: @article, status: :created
+            else
+              render json: @article.errors, status: :unprocessable_entity
             end
-
-            def create
-                article = Article.new(article_params)
-                
-                if article.save
-                    render json: {status: 'SUCCESS', message: 'Loaded ariticle', data:article},status: :ok
-                else
-                    render json: {status: 'ERROR', message: 'Article not saved', 
-                    data:article.errors},status: :unprocessable_entity
-                end   
+          end
+        
+          def update
+            if @article.update(article_params)
+              render json: @article
+            else
+              render json: @article.errors, status: :unprocessable_entity
             end
-
-            def destroy 
-                article = Article.find(params[:id])
-                article.destroy
-                render json: {status: 'SUCCESS', message: 'Deleted ariticle', data:article},status: :ok
-            end
-
-            def update
-                article = Article.find(params[:id])
-                if article.update_attributes(article_params)
-                    render json: {status: 'SUCCESS', message: 'Updated ariticle', data:article},status: :ok
-                else
-                    render json: {status: 'ERROR', message: 'Article not updated', 
-                    data:article.errors},status: :unprocessable_entity
-                end   
-            end
-
-            def category
-                category = Article.find(params[:id]).category
-                render json: {status: 'SUCCESS', message: 'Category of article', data:category},status: :ok
-            end
-
+          end
+        
+          def destroy
+            @article.destroy
+          end        
+      
             private
+            def set_articles
+              @article = Article.find(params[:id])
+            end
 
             def article_params
-                params.permit(:title, :body)
+                params.permit(:title, :body, :category_id)
             end
+
         end
     end
 end
