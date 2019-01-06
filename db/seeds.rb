@@ -6,15 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-5.times do
-    Article.create({
-        title: Faker::Book.title,
-        body: Faker::Lorem.sentence
-    })
-end
 
-5.times do
-    Category.create({
-        name: Faker::GameOfThrones.house
-    })
-end
+# Create Default and first Superdmin User
+User.create(
+    username: "superadmin",
+    email: "superadmin@superadmin.com",
+    first_name: "Superadmin",
+    last_name: "Super",
+    password: "12345678",
+    password_confirmation: "12345678")

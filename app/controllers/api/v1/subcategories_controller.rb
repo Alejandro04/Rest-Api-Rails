@@ -1,7 +1,7 @@
 module Api
     module V1
         class SubcategoriesController < ApplicationController
-          #before_action :authenticate_user!
+          before_action :authenticate_user!
           before_action :set_subcategory, only: [:show, :update, :destroy]
 
           def index

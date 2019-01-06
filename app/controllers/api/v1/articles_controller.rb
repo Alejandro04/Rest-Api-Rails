@@ -1,7 +1,7 @@
 module Api
     module V1
         class ArticlesController < ApplicationController
-          #before_action :authenticate_user!
+          before_action :authenticate_user!
           before_action :set_articles, only: [:show, :update, :destroy]
 
           def index
