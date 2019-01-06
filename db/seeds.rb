@@ -8,10 +8,10 @@
 
 
 # Create Default and first Superdmin User
+
+# INSTALL DEVISE_TOKEN_AUTH FOR DEVISE.
 User.create(
-    username: "superadmin",
     email: "superadmin@superadmin.com",
-    first_name: "Superadmin",
-    last_name: "Super",
+    name: "Superadmin",
     password: "12345678",
     password_confirmation: "12345678")
