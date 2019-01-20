@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :articles
       resources :categories
       resources :subcategories
+      resources :posts
     end
   end
 end
