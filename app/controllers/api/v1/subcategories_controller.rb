@@ -18,6 +18,8 @@ module Api
             @subcategory = Subcategory.new(subcategory_params)
         
             if @subcategory.save
+              WelcomeMailer.notify(@subcategory).deliver_now
+
               render json: @subcategory, status: :created
             else
               render json: @subcategory.errors, status: :unprocessable_entity
